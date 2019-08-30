@@ -6,7 +6,7 @@ set nobackup
 
 set noswapfile
 
-set autochdir
+"set autochdir
 
 set history=1000
 
@@ -37,7 +37,6 @@ set encoding=utf-8
 
 "===========filetype类型=====
 filetype on
-
 "缩进
 filetype indent on
 "插件
@@ -63,10 +62,11 @@ set softtabstop=2
 "=========外观========
 
 set cursorline
-"set curosrcolumn
+set cursorcolumn
 " 在一个屏幕显示不够一行内容的时候的行为，nowrap表示不自动折行
 "set nowrap
 set wrap
+
 set textwidth=80
 
 set linebreak
@@ -82,6 +82,7 @@ set ruler
 set background=dark
 
 "=========搜索=======
+"
 set showmatch
 
 set hlsearch
@@ -91,6 +92,8 @@ set incsearch
 set ignorecase
 
 set smartcase
+
+"set nowrapscan
 
 "=========插件内容
 
@@ -106,7 +109,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'  "主题内容
-"Plugin 'ycm-core/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-airline/vim-airline' "statusline内容
 Plugin 'vim-airline/vim-airline-themes' "statusline内容
 "Plugin 'nathanaelkane/vim-indent-guides'
@@ -123,7 +126,9 @@ Plugin 'tpope/vim-fugitive'
 " https://vimjc.com/vim-gutentags.html "生产tag在文件中跳转
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'chiel92/vim-autoformat' "代码格式化工具，使用之前需要安装各类语言的format工具
-
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-startify'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -230,3 +235,21 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+"=========ctrlp配置
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
+"============majutsushi/tagbar 插件
+nmap <F8> :TagbarToggle<CR>
