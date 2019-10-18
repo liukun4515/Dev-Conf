@@ -1,0 +1,39 @@
+# 遇到tmux不支持的内容可以参考相关内容
+# tmux的不同版本支持的命令是不相同的，例如 mouse命令等等
+# https://github.com/tmux/tmux/issues/1691
+# https://github.com/tmux/tmux/wiki/FAQ
+
+# tmux 还可以配置tpm tmux package manager使用
+# https://github.com/tmux-plugins/tpm
+
+# tmux 复制粘贴的内容
+# https://github.com/tmux-plugins/tmux-yank
+
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded"
+
+set -g mouse on
+set-option -g allow-rename off
+set -g history-limit 100000
+
+# start window indexing at one instead of zero 使窗口从1开始，默认从0开始
+set -g base-index 1
+
+# status bar with load and time
+set -g status-bg yellow
+set -g status-fg '#bbbbbb'
+set -g status-left-style fg=green,bg=blue
+#set -g status-left-fg green
+#set -g status-left-bg blue
+set -g status-right-style fg=green,bg=blue
+#set -g status-right-fg green
+#set -g status-right-bg blue
+set -g status-left-length 90
+set -g status-right-length 90
+set -g status-left '[#(whoami)]'
+set -g status-right '[#(date +" %m-%d %H:%M ")]'
+set -g status-justify "centre"
+set -g window-status-format '#I #W'
+set -g window-status-current-format ' #I #W '
+setw -g window-status-current-style bg=blue,fg=green
+#setw -g window-status-current-bg blue
+#setw -g window-status-current-fg green

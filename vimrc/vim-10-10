@@ -129,10 +129,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-gutentags' "自动建立tags的工具
 Plugin 'chiel92/vim-autoformat' "代码格式化工具，使用之前需要安装各类语言的format工具
-Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-startify'
-Plugin 'fatih/vim-go'
 Plugin 'yggdroot/leaderf'
 Plugin 'humiaozuzu/tabbar'
 
