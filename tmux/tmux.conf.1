@@ -1,0 +1,33 @@
+# 动态load tmux配置，不需要重启session；使用方法 leader+r
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded"
+# 启动mouse方法
+set -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+# 允许对window的名字进行修改；使用方法 leader+ ，  （逗号）
+set-option -g allow-rename off
+# 鼠标选择pane
+set -g mouse-select-pane on
+# 历史记录的最大行数
+set -g history-limit 10000
+# start window indexing at one instead of zero 使窗口从1开始，默认从0开始
+set -g base-index 1
+set -g status-utf8 on
+
+# status bar with load and time; status bar的配置与使用
+set -g status-bg yellow
+set -g status-fg '#bbbbbb'
+set -g status-left-fg green
+set -g status-left-bg blue
+set -g status-right-fg green
+set -g status-right-bg blue
+set -g status-left-length 90
+set -g status-right-length 90
+set -g status-left '[#(whoami)]'
+set -g status-right '[#(date +" %m-%d %H:%M ")]'
+set -g status-justify "centre"
+set -g window-status-format '#I #W'
+set -g window-status-current-format ' #I #W '
+setw -g window-status-current-bg blue
+setw -g window-status-current-fg green

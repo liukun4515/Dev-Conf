@@ -1,0 +1,140 @@
+" vimrc 配置文件
+" 修改日志：19-12-10
+"========================================
+" vim 中文help文档
+" http://vimcdoc.sourceforge.net/doc/help.html
+" basic命令的含义
+" https://segmentfault.com/a/1190000000446738#item-2-14
+"=========================================
+
+" vim与vi的兼容性=========================
+set nocompatible "非兼容vi
+
+" 显示内容================================
+set number "在vim中显示行数
+set showmode " 左下角显示当前的模式名称，没有显示则代表现在是常规模式
+set showcmd " 在屏幕右下角显示未完成的指令输入
+set laststatus=2 " 表示显示状态栏 https://shapeshed.com/vim-statuslines/
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
+
+" 缩进，文件类型，文本显示等=============
+syntax on  " 语法高亮
+filetype on " 判断文本类型
+
+" 缩进配置==============================
+set expandtab " 将 <TAB> 符号转变为 <SPACE>，也就是空格
+set tabstop=2 "tabstop 就是 <TAB> 字符所代表的空格数，一般我们会用 expandtab 把 <TAB> 转变成空格符，然后键入 <TAB> 时就会产生 tabstop 个空格了
+set smarttab "smarttab 要和后面的 shiftwidth 配合来用，它只作用于行首位置。当 smarttab 开启时，在行首键入 <TAB> 会填充 shiftwidth 设定的数值，在其他地方则填充 tabstop 设定的数值；当 smarttab 关闭时，无论在哪里键入 <TAB>，都会填充 tabstop 设定的数值。所以尽量设置tabstop和shiftwidth相同。
+set autoindent " 表示自动缩进，会受到smartindent的影响
+set smartindent " 为缩进行为采用类似 C 语言的风格，主要适用于拥有块级作用于的编程语言 
+set shiftwidth=2 " 每次缩进对应的空格数目当你使用自动格式化（比如 gq），或者手动缩进（<< 和 >>）时，Vim 使用的数值就是这个。
+set softtabstop=2 "softtabstop 会影响 <BS> 删除的空格数，但不是用 <SPACE> 插入的空格，而是 <TAB> 插入的空格。所以我们总是把 softtabstop 设定成和 tabstop 一样的数值，这样无论是用 <TAB> 插入缩进还是用 <BS> 删除缩进，其行为总是一样的。
+
+" 编辑行与列=============================
+set ruler
+set cursorline " 行光标
+" set cursorcolumn " 列光标
+set colorcolumn=100 " 在100字符列位置的光标
+
+
+" 搜索内容===============================
+set showmatch
+set hlsearch " 高亮搜索
+set ignorecase " 忽律大小写
+set nowrapscan " 搜索不会出现循环搜索
+set incsearch " 增量搜索功能
+set smartcase " 搜索更加智能，如果输入有大写，就会放弃ignorecase；否则使用ignorecase
+
+" 代码编写相关(缩进等配置）==============
+filetype indent on " 针对不同文件类型采用不同的缩进
+
+" 文本编码格式与颜色=================
+set encoding=utf-8
+set background=dark
+" 额外配置===============================
+set nobackup
+set noswapfile
+set history=200
+set backspace=2 "https://www.smslit.top/2016/11/27/vim-backspace-invalid/
+
+" 鼠标配置===============================
+set mouse=a
+
+" 额外配置信息
+" Make comments and special characters look better
+highlight Comment    ctermfg=245 guifg=#8a8a8a
+highlight NonText    ctermfg=240 guifg=#585858
+highlight SpecialKey ctermfg=240 guifg=#585858
+
+" 临时修改区域
+
+
+" 插件区域
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'  "主题内容
+Plugin 'vim-airline/vim-airline' "状态栏插件
+Plugin 'vim-airline/vim-airline-themes' "主题
+Plugin 'majutsushi/tagbar' " 可以将正在编辑的文件生成一个大纲
+Plugin 'yggdroot/leaderf' " 超级强大fuzzy搜索工具
+"Plugin 'ludovicchabant/vim-gutentags' "Plugin 'ludovicchabant/vim-gutentags' 自动化管理tags的插件
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" 插件配置区域
+
+"colorscheme solarized 插件配置
+colorscheme solarized
+
+" air line 插件
+set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
+let g:airline#extensions#tabline#enabled = 1   " 是否打开tabline
+"这个是安装字体后 必须设置此项"
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum' "选择主题
+let g:airline#extensions#tabline#enabled=1    "Smarter tab line: 显示窗口tab和buffer
+"let g:airline#extensions#tabline#left_sep = ' '  "separater
+"let g:airline#extensions#tabline#left_alt_sep = '|'  "separater
+"let g:airline#extensions#tabline#formatter = 'default'  "formater
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+
+" tagbar插件
+nmap <F8> :TagbarToggle<CR>
+
+
+" leaderf 插件配置
+let g:Lf_WindowHeight=0.2 "配置leaderf 搜索的窗口大小
+
+" leaderf gtag 配置
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
