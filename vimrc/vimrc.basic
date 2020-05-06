@@ -15,7 +15,6 @@ set nocompatible "非兼容vi
 set number "在vim中显示行数
 set showmode " 左下角显示当前的模式名称，没有显示则代表现在是常规模式
 set showcmd " 在屏幕右下角显示未完成的指令输入
-set laststatus=2 " 表示显示状态栏 https://shapeshed.com/vim-statuslines/
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 
 " 缩进，文件类型，文本显示等=============
@@ -70,72 +69,3 @@ highlight SpecialKey ctermfg=240 guifg=#585858
 " 临时修改区域
 
 
-" 插件区域
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'  "主题内容
-Plugin 'vim-airline/vim-airline' "状态栏插件
-Plugin 'vim-airline/vim-airline-themes' "主题
-Plugin 'majutsushi/tagbar' " 可以将正在编辑的文件生成一个大纲
-Plugin 'yggdroot/leaderf' " 超级强大fuzzy搜索工具
-"Plugin 'ludovicchabant/vim-gutentags' "Plugin 'ludovicchabant/vim-gutentags' 自动化管理tags的插件
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" 插件配置区域
-
-"colorscheme solarized 插件配置
-colorscheme solarized
-
-" air line 插件
-set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
-let g:airline#extensions#tabline#enabled = 1   " 是否打开tabline
-"这个是安装字体后 必须设置此项"
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum' "选择主题
-let g:airline#extensions#tabline#enabled=1    "Smarter tab line: 显示窗口tab和buffer
-"let g:airline#extensions#tabline#left_sep = ' '  "separater
-"let g:airline#extensions#tabline#left_alt_sep = '|'  "separater
-"let g:airline#extensions#tabline#formatter = 'default'  "formater
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-
-" tagbar插件
-nmap <F8> :TagbarToggle<CR>
-
-
-" leaderf 插件配置
-let g:Lf_WindowHeight=0.2 "配置leaderf 搜索的窗口大小
-
-" leaderf gtag 配置
-let g:Lf_GtagsAutoGenerate = 1
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
