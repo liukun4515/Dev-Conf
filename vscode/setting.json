@@ -1,0 +1,45 @@
+{
+    "C_Cpp.updateChannel": "Insiders",
+    "workbench.statusBar.visible": true,
+    "workbench.colorTheme": "One Monokai",
+    "C_Cpp.default.intelliSenseMode": "msvc-x64",
+    "merge-conflict.codeLens.enabled": false,
+    "gnuGlobal.globalExecutable": "/usr/local/bin/global",
+    "gnuGlobal.gtagsExecutable": "/usr/local/bin/gtags",
+    "window.zoomLevel": 0,
+    "http.proxySupport": "off",
+    "git.ignoreLegacyWarning": true,
+    "editor.tabSize": 2,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "codegnuglobal.executable": "/usr/local/bin/global",
+    "gnuGlobal.autoUpdate": "Enabled",
+    "[cpp]": {
+        "editor.quickSuggestions": true
+        },
+    "[c]": {
+        "editor.quickSuggestions": true
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "leetcode.endpoint": "leetcode-cn",
+    "leetcode.workspaceFolder": "/Users/liukun/.leetcode",
+    "leetcode.hint.setDefaultLanguage": false,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "leetcode.showCommentDescription": true,
+    "leetcode.hint.configWebviewMarkdown": false,
+    "leetcode.hint.commentDescription": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "gitlens.advanced.messages": {
+        "suppressGitVersionWarning": true
+    },
+    "terminal.integrated.fontSize": 22,
+    "markdown.preview.fontSize": 18,
+    "debug.console.fontSize": 80,
+    "editor.suggestFontSize": 14,
+    "editor.fontSize": 14
+}
